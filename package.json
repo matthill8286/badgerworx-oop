@@ -1,0 +1,13 @@
+{
+  "name": "badgeworks-pwa-frontend",
+  "version": "0.0.1",
+  "description": "BadgeWorks PWA Frontend",
+  "private": true,
+  "keywords": [
+    "PWA",
+    "JavaScript"
+  ],
+  "files": [],
+  "license": "MIT",
+  "author": "Matthew Hill <matthill8286@gmail.com>"
+}

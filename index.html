@@ -1,0 +1,117 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Badgerworx Homepage</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <meta name="description" content="Badgerworx example application">
+
+    <meta property="og:title" content="Badgerworx">
+    <meta property="og:type" content="application/javascript">
+    <meta property="og:url" content="*/*">
+    <meta property="og:image" content="*/*">
+    <meta property="og:image:alt" content="*/*">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body class="layout-center">
+<header class="header header--primary" role="banner">
+    <h1 class="header__title">Badgerworx</h1>
+    <div id="userActions" class="header__actions" aria-live="polite">
+        <button id="loginButton" class="button button--primary" aria-label="Login to Badgerworx">Login</button>
+    </div>
+</header>
+
+<main class="main" role="main">
+    <h2 class="main__title" id="mainTitle">Welcome to Badgerworx</h2>
+</main>
+
+<div class="login-container" id="loginContainer" aria-hidden="true">
+    <form id="loginForm" aria-label="Login Form" class="form">
+        <label for="username" class="form__label">Username:</label>
+        <input type="text" id="username" name="username" class="form__input" placeholder="Enter your username"
+               aria-required="true" required>
+
+        <label for="password" class="form__label">Password:</label>
+        <input type="password" id="password" name="password" class="form__input" placeholder="Enter your password"
+               aria-required="true" required>
+
+        <div class="form__group">
+            <input type="checkbox" id="rememberMe" name="rememberMe" class="form__checkbox">
+            <label for="rememberMe" class="form__label--inline">Remember me</label>
+        </div>
+
+        <a href="#" role="button" class="link" aria-label="Forgot your password?">Forgot password?</a><br><br>
+        <button type="submit" class="button button--primary" aria-label="Submit login form">Login</button>
+    </form>
+</div>
+
+<script src="js/app.js"></script>
+<script type="module">
+    // Service Worker Registration
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(error => {
+                console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+    }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      const auth = new Auth();
+      new BadgerworxLogin(auth);
+  });
+
+  // Add to Home Screen (A2HS) Prompt
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+
+      const installButton = document.createElement('button');
+      installButton.textContent = "Install Badgerworx";
+      document.body.appendChild(installButton);
+
+      installButton.addEventListener('click', () => {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                  console.log('User accepted the A2HS prompt');
+              } else {
+                  console.log('User dismissed the A2HS prompt');
+              }
+              deferredPrompt = null;
+          });
+      });
+  });
+
+  // Push Notifications
+  if ('Notification' in window && 'serviceWorker' in navigator) {
+      Notification.requestPermission().then(permission => {
+          if (permission === 'granted') {
+              console.log('Notification permission granted.');
+
+              navigator.serviceWorker.ready.then(registration => {
+                  registration.showNotification('Welcome to Badgerworx!', {
+                      body: 'Thanks for visiting our app!',
+                      icon: '/images/logo.png',
+                      vibrate: [100, 50, 100],
+                      tag: 'welcome-notification'
+                  });
+              });
+          }
+      });
+  }
+</script>
+</body>
+</html>

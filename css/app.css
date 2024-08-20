@@ -1,0 +1,137 @@
+/* Base Layout Styles */
+.layout-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+.header {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.header--primary {
+    background-color: #333;
+}
+
+.header__title {
+    margin: 0;
+    font-size: 1.5em;
+    padding-left: 20px;
+}
+
+.header__actions {
+    margin-right: 20px;
+}
+
+/* Main Content Styles */
+.main {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.main__title {
+    font-size: 2em;
+}
+
+/* Form Styles */
+.form {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    width: 350px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form__label {
+    font-size: 1em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form__label--inline {
+    display: inline;
+    margin-left: 5px;
+}
+
+.form__input {
+    width: 95%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form__checkbox {
+    margin-right: 5px;
+}
+
+.form__group {
+    display: flex;
+    align-items: center;
+}
+
+/* Button Styles */
+.button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+.button--primary {
+    background-color: #00bfa5;
+    color: white;
+}
+
+/* Link Styles */
+.link {
+    color: #00bfa5;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Adjustments for tablets and smaller devices */
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .login-container {
+        padding: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjustments for mobile phones */
+    .header {
+        font-size: 1.2em;
+    }
+    .button {
+        width: 100%;
+        padding: 0.8em;
+    }
+}
