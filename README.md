@@ -1,4 +1,4 @@
-# Badgerworx Assignment README  
+# Badgerworx Assignment
 
 ## Description
 
