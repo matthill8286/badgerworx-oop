@@ -34,4 +34,3 @@ To contribute to this repository, you can do the following:
 5. Create a pull request.
 6. Wait for the pull request to be reviewed.
 7. Merge the pull request.
-8. 
