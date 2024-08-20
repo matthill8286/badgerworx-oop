@@ -6,10 +6,11 @@ This is a repository for the OOP module of the Badgerworx course.
 
 ## Usage
 
-To user this module, you can do the following:
+To user this feature, you can do the following:
 
-1. open the index.html file in your browser.
-2. use a web server to serve the files in the repository. Webstorm has a built-in web server that you can use.
+1. Clone the repository.
+2. open the index.html file in your browser.
+3. use a web server to serve the files in the repository. Webstorm has a built-in web server that you can use.
 
 ## Contributing
 
